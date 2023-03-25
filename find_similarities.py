@@ -51,8 +51,14 @@ total_cost = 0 # Total amount spent so far for OpenAI's models
 latest_announced_cost = 0 # Last total cost printed
 def update_cost(text, model):
     global total_cost, latest_announced_cost
-    if model == "text-embedding-ada-002": # OpenAI quotes about ~3,000 pages per US dollar
-        total_cost = total_cost + (0.0004 * len(enc.encode(text)))
+
+    if model == "text-embedding-ada-002": 
+        total_cost = total_cost + (0.0004 * (1 / 1000) * len(enc.encode(text))) # OpenAI quotes about ~3,000 pages per US dollar
+    elif model == "gpt-3.5-turbo": 
+        total_cost = total_cost + (0.002 * (1 / 1000) * len(enc.encode(text)))
+    elif model == "gpt-4": 
+        total_cost = total_cost + (0.06 * (1 / 1000) * len(enc.encode(text))) # roughly
+    
     if (total_cost > latest_announced_cost + 1):
         latest_announced_cost = total_cost
         print("$" + str(total_cost) + " spent so far")
@@ -154,7 +160,7 @@ with open(sorted_output_path, 'w') as output:
 print("\n...finished writing output JSON files\n")
 print("writing report...\n")
 
-# ------- WRITE REPORT USING GPT-4 ------- # 
+# ------- WRITE REPORT USING GPT ------- # 
 
 # Get an array of similarities for statistical operations
 similarities = [pair["similarity"] for pair in similar_pairs]
@@ -193,8 +199,9 @@ for pair in similar_pairs[0: report_scope]:
 
     report.write("Explanation: ")
     try:
+        model = "gpt-3.5-turbo"
         completion = openai.ChatCompletion.create(
-            model = "gpt-3.5-turbo",
+            model = model,
             messages = [
                 {"role": "system", "content": "You are a linguistic analysis assistant."},
                 {"role": "user", "content": "Suggest why our vector similarity model may consider the following two sentences similar:\n\n" + pair[1] + "\n\n" + pair[2]}
@@ -202,6 +209,7 @@ for pair in similar_pairs[0: report_scope]:
             temperature = 0
         )
         report.write(completion.choices[0].message.content.strip() + "\n\n")
+        update_cost("You are a linguistic analysis assistant." + "Suggest why our vector similarity model may consider the following two sentences similar:\n\n" + pair[1] + "\n\n" + pair[2] + completion.choices[0].message.content, model)
     except:
         report.write("There has been an error and an explanation cannot be provided.\n\n")
 
@@ -222,4 +230,5 @@ else:
 
 report.write("------------------------------\n\n")
 
-report.write("END OF REPORT")
+report.write("END OF REPORT\n")
+report.write("TOTAL COST TO PRODUCE: $" + str(total_cost))

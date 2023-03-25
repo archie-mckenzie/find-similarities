@@ -9,9 +9,9 @@ Total pairs analyzed: 725
 Highest pairwise similarity: 0.9798352292724348
 Lowest pairwise similarity: 0.7151836902882649
 
-Mean pairwise similarity: 0.8069237982877204
+Mean pairwise similarity: 0.8069154462528514
 Median pairwise similarity: 0.8044265518623056
-Standard deviation: 0.043498774966460166
+Standard deviation: 0.04349932608503782
 
 ------------------------------
 
@@ -33,7 +33,7 @@ Explanation: The vector similarity model may consider the two sentences similar 
 
 "When the Colchian king sent a herald to demand reparation for the robbery and restitution of his daughter, the Greeks replied that, as they had been refused reparation for the abduction of the Argive Io, they would not make any to the Colchians."
 
-Similarity: 0.971499320091799
+Similarity: 0.971492300291842
 
 Explanation: The vector similarity model may consider the two sentences similar because they share a similar structure and use of language. Both sentences discuss a situation where the Colchian king demands compensation or reparation for the kidnapping of his daughter, and the Greeks refuse, citing the lack of compensation they received for the abduction of Io from Argos. The sentences also use similar words and phrases, such as "demand compensation/reparation," "return/restitution of his daughter," "refused," and "abduction of Io from Argos." These similarities in structure and language may lead the vector similarity model to consider the two sentences as semantically similar.
 
@@ -65,7 +65,7 @@ Similarity: 0.9798352292724348
 
 "When the Colchian king sent a herald to demand reparation for the robbery and restitution of his daughter, the Greeks replied that, as they had been refused reparation for the abduction of the Argive Io, they would not make any to the Colchians."
 
-Similarity: 0.971499320091799
+Similarity: 0.971492300291842
 
 -----
 
@@ -97,7 +97,7 @@ Similarity: 0.9588903719341254
 
 "But after this (the Persians say), the Greeks were very much to blame; for they invaded Asia before the Persians attacked Europe."
 
-Similarity: 0.95474994301579
+Similarity: 0.9547698629489353
 
 -----
 
@@ -153,7 +153,7 @@ Similarity: 0.9371515978693828
 
 "Ever since then we have regarded Greeks as our enemies.” For the Persians claim Asia for their own, and the foreign peoples that inhabit it; Europe and the Greek people they consider to be separate from them."
 
-Similarity: 0.9351107336732224
+Similarity: 0.9350325459148833
 
 -----
 
@@ -161,7 +161,7 @@ Similarity: 0.9351107336732224
 
 "We of Asia did not deign to notice the seizure of our women; but the Greeks, for the sake of a Lacedaemonian woman, recruited a great armada, came to Asia, and destroyed the power of Priam."
 
-Similarity: 0.9317227824454798
+Similarity: 0.9317073821046621
 
 -----
 
@@ -169,10 +169,11 @@ Similarity: 0.9317227824454798
 
 "As these stood about the stern of the ship bargaining for the wares they liked, the Phoenicians incited one another to set upon them."
 
-Similarity: 0.9247581675960996
+Similarity: 0.924819500572598
 
 -----
 
 ------------------------------
 
 END OF REPORT
+TOTAL COST TO PRODUCE: $0.0018344
