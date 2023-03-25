@@ -10,7 +10,9 @@
 </li>
 <li>Returns the top similarity match. In addition, returns any 'outlier' pairs which are 2.7σ above the mean in terms of similarity.
 </li>
-<li>Uses GPT-4 to explain the similarity between these sections.
+<li>Outputs a .txt file with every sentence pair in order of similarity.
+</li>
+<li>Also outputs a report written by GPT-4, which explain the similarity between the most similar sections.
 </li>
 </ol>
 
