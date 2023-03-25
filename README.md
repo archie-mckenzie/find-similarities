@@ -1,23 +1,44 @@
-# Find the most similar sections in two large texts
+# Find the most similar sentences in two large texts
 
 ## How it works
 
 <ol>
-<li>Uses NLP to split the text corpus into sentence-size chunks.</li>
-<li>Embeds each sentence with OpenAI's ada-002.
+<li>
+Uses NLTK to split the text corpus into sentence-size chunks.
 </li>
-<li>Calculates vector similarities of each sentence pair.
+<li>
+Embeds each sentence with OpenAI's ada-002.
 </li>
-<li>Returns the top similarity match. In addition, returns any 'outlier' pairs which are 2.7σ above the mean in terms of similarity.
+<li>
+Calculates vector similarities of each sentence pair.
 </li>
-<li>Outputs a .txt file with every sentence pair in order of similarity.
+<li>
+Outputs a .json file, called `output.json` by default, with every sentence pair in order of writing.
 </li>
-<li>Also outputs a report written by GPT-4, which explain the similarity between the most similar sections.
+<li>
+Outputs a .json file, called `sorted_output.json` by default, with every sentence pair in order of similarity.
+</li>
+<li>
+Outputs a .txt file, called `report.txt` by default. This report contains information like the mean, standard deviation, and cost it took to produce the outputs. It also includes a selection of highly similar outlier sentences, by default defined as 2.7σ above the mean similarity score.
 </li>
 </ol>
 
 ## Instructions
 
-## Running time
+<ol>
+<li>Download the repo.</li>
+<li>Install Python.</li>
+<li>Install this project's dependencies, including:
+<ul>
+<li>nltk</li>
+<li>openai</li>
+<li>dotenv</li>
+<li>tiktoken</li>
+<li>numpy</li>
+</ul>
+</li>
+</ol>
+
+Note: the limiting time factor of `find_similarities.py` is the embedding with ada-002, which must be done for every sentence in both input texts.
 
 

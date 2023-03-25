@@ -1,6 +1,6 @@
 # find_similarities.py
-# Python script for finding similar sections in large chunks of text
-# © Archie McKenzie, MIT License
+# Python script for finding similar sentences across two large texts
+# © 2023 Archie McKenzie, MIT License
 
 # ------- IMPORTS ------- #
 
@@ -45,7 +45,7 @@ report_path = 'output/report.txt'
 report_scope = 3 # how many of the most similar paragraphs the report should analyze
 outlier_threshold = 2.7 # 2.7 is the traditional statistical threshold for outliers
 
-# ------- CALCULATING TIMING AND COSTS ------- #
+# ------- CALCULATING COSTS ------- #
 
 total_cost = 0 # Total amount spent so far for OpenAI's models
 latest_announced_cost = 0 # Last total cost printed
@@ -158,9 +158,10 @@ with open(sorted_output_path, 'w') as output:
     json.dump(similar_pairs, output, indent = 4)
 
 print("\n...finished writing output JSON files\n")
-print("writing report...\n")
 
 # ------- WRITE REPORT USING GPT ------- # 
+
+print("writing report...\n")
 
 # Get an array of similarities for statistical operations
 similarities = [pair["similarity"] for pair in similar_pairs]
@@ -189,6 +190,7 @@ report.write("------------------------------\n\n")
 if len(similar_pairs) < report_scope: # Make sure an overlarge report_scope can't crash the program
     report_scope = len(similar_pairs) - 1
 
+# Write the int(report_scope) most similar sentences and use GPT to explain why the vector model might think they are similar
 report.write("The following " + str(report_scope) + " sentences were the ranked the most similar:\n\n")
 report.write("-----\n\n")
 for pair in similar_pairs[0: report_scope]:
@@ -217,6 +219,8 @@ for pair in similar_pairs[0: report_scope]:
 
 report.write("------------------------------\n\n")
 
+# Write out all the high similarity statistical outliers
+# This is calculated by adding an int(outlier_theshold) number of standard deviations to the mean
 if (similarities[0]) < (mean + (outlier_threshold * std_dev)):
     report.write("There were no high-similarity statistical outliers.\n\n")
 else:
@@ -230,5 +234,6 @@ else:
 
 report.write("------------------------------\n\n")
 
+# End the report
 report.write("END OF REPORT\n")
 report.write("TOTAL COST TO PRODUCE: $" + str(total_cost))
