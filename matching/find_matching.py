@@ -30,9 +30,10 @@ from collections import Counter
 import json
 
 # ------- EDITABLE VARIABLES ------- #
-input_path_1 = 'input/dial_of_princes.txt'
-input_path_2 = 'input/wits_misery.txt'
-output_path = 'output/matching.json' # sorted
+input_path_1 = '../input/dial_of_princes.txt'
+input_path_2 = '../input/wits_misery.txt'
+unsorted_similarities_path = '../output/output.json'
+output_path = 'matching.json' # sorted
 
 # ------- OTHER FUNCTIONS ------- #
 
@@ -55,15 +56,39 @@ def tokenize_sentences(sentences):
         tokenized_sentences.append(enc.encode(sentence))
     return tokenized_sentences
 
-# sort a list of pair jsons by the similarity index
-def sort_by_matching_score(pairs):
-    return sorted(pairs, key=lambda x: x['matchingWordRarity'], reverse=True)
+# Sorts pairs into groups by their rarest words, then ranks them based on semantic similarity
+def sort_by_matching_word_rarity_then_similarity(pairs):
+    # Sort by matchingWordRarity in descending order
+    sorted_pairs = sorted(pairs, key=lambda x: x['matchingWordRarity'])
+
+    # Group pairs by matchingWordRarity
+    groups = {}
+    for pair in sorted_pairs:
+        rarity = pair['matchingWordRarity']
+        if rarity in groups:
+            if (pair["matchingWordRarity"] == float('inf')):
+                pair["matchingWordRarity"] = -1
+            groups[rarity].append(pair)
+        else:
+            groups[rarity] = [pair]
+
+    # Sort pairs within each group by similarity in descending order
+    for rarity, group in groups.items():
+        groups[rarity] = sorted(group, key=lambda x: x['similarity'], reverse=True)
+
+    # Flatten the list of groups and return the result
+    return [pair for rarity in groups for pair in groups[rarity]]
+
     
 # ------- PROCESS .TXT FILES ------- # 
 
 # Read the .txt files
 input_1 = open(input_path_1, 'r').read()
 input_2 = open(input_path_2, 'r').read()
+
+# Get the pairs by similarity
+with open(unsorted_similarities_path, 'r') as f:
+    similarity_pairs = json.load(f)
 
 # Construct frequency table of tokens
 num_tokens_1, freq_table_1 = make_token_freq_table(input_1)
@@ -80,23 +105,30 @@ tokenized_sentences_2 = tokenize_sentences(sentences_2)
 pairs = []
 
 # Give each sentence pair a score based on the rarity of their matching words
+index = 0
 for i, alpha in enumerate(tokenized_sentences_1):
     for j, beta in enumerate(tokenized_sentences_2):
-        matching_score = 0
+        matching_word_rarity = float('inf')
+        matching_rare_token = ""
         for token_a in alpha:
             for token_b in beta:
                 if (token_a == token_b):
-                    incidence_1 = freq_table_1[token_a] if (freq_table_1[token_a] != 0) else 1
-                    incidence_2 = freq_table_2[token_b] if (freq_table_2[token_b] != 0) else 1
-                    matching_score += (1 / (( incidence_1 / num_tokens_1) * ( incidence_2 / num_tokens_2)))
+                    appearances_1 = freq_table_1[token_a] if (freq_table_1[token_a] != 0) else 1
+                    appearances_2 = freq_table_2[token_b] if (freq_table_2[token_b] != 0) else 1
+                    if (appearances_1 + appearances_2) < matching_word_rarity:
+                        matching_word_rarity = (appearances_1 + appearances_2)
+                        matching_rare_token = enc.decode([token_a])
         pair = {
             1: sentences_1[i],
             2: sentences_2[j],
-            "matchingWordRarity": matching_score
+            "similarity": similarity_pairs[index]["similarity"],
+            "matchingRareToken": matching_rare_token,
+            "matchingWordRarity": matching_word_rarity
         }
         pairs.append(pair)
+        index += 1
 
-sorted_pairs = sort_by_matching_score(pairs)
+sorted_pairs = sort_by_matching_word_rarity_then_similarity(pairs)
 
 # ------- WRITE OUTPUT AS JSON FILE ------- # 
 with open(output_path, 'w') as output:
