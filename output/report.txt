@@ -7,11 +7,11 @@ Total sentences in second corpus: 20
 Total pairs analyzed: 4320
 
 Highest pairwise similarity: 0.9438499008427284
-Lowest pairwise similarity: 0.7238331817203477
+Lowest pairwise similarity: 0.7238303553537438
 
-Mean pairwise similarity: 0.7984970726544914
-Median pairwise similarity: 0.798409238801004
-Standard deviation: 0.02553682015903839
+Mean pairwise similarity: 0.7985654980803328
+Median pairwise similarity: 0.7985150432603576
+Standard deviation: 0.025534234681908834
 
 ------------------------------
 
@@ -33,9 +33,9 @@ Explanation: The vector similarity model may consider these two sentences simila
 
 "In which two things Messia useth this observation, that in the time that these first effects happened, the Romans were mortal enemies of the Egyptians, for which cause it may easily bee seen how powerful the force of truth is, since the Romans raised a statue to their Enemy, and deprived their homeborn son and Citizen of burial for being a flattering liar: Hitherto he, and here conclude I the description of this fiend."
 
-Similarity: 0.9342075913834794
+Similarity: 0.9342665281219065
 
-Explanation: The vector similarity model may consider these two sentences similar because they both discuss the power of truth and provide examples of how it was valued by the Romans. Both sentences also mention the Romans' treatment of their enemies and their own citizens based on their honesty or lack thereof. Additionally, both sentences use similar language and syntax, such as the use of colons to introduce examples.
+Explanation: The vector similarity model may consider these two sentences similar because they both discuss the power of truth and provide examples of how it was valued by the Romans. Both sentences also mention the Romans' actions towards their enemies and their own citizens based on their honesty or dishonesty. Additionally, both sentences use similar language and syntax, such as the use of colon to introduce examples and the use of archaic words like "sith" and "therefore."
 
 -----
 
@@ -67,7 +67,7 @@ Similarity: 0.9438499008427284
 
 "In which two things Messia useth this observation, that in the time that these first effects happened, the Romans were mortal enemies of the Egyptians, for which cause it may easily bee seen how powerful the force of truth is, since the Romans raised a statue to their Enemy, and deprived their homeborn son and Citizen of burial for being a flattering liar: Hitherto he, and here conclude I the description of this fiend."
 
-Similarity: 0.9342075913834794
+Similarity: 0.9342665281219065
 
 -----
 
@@ -83,7 +83,7 @@ Similarity: 0.9049616883251816
 
 "To conclude therefore the discourse of this Devil, I will end with two notable actions of the Romans, whereby you may perceive by them, to make estimation of truth, and to grow in detestation of Flattery and Falsehood: The Emperor Augustus in his triumph over Anthony and Cleopatra, led to Rome (amongst his other spoils)* a grave Egyptian Priest of sixty years old, whose life was so full of continence, and words so stored with truth, that it was never heard of him in all his life time that he had told untruth, or used flattery; for which cause it was concluded by the Senate, that he should presently bee set free, and made chief Priest, commanding (that among the statues of famous and renowned men) one in especial should be reared for him."
 
-Similarity: 0.8982153837366419
+Similarity: 0.8982002081438167
 
 -----
 
@@ -91,7 +91,7 @@ Similarity: 0.8982153837366419
 
 "There is in Princes and great mens courts (saith he) a rude, envious, and rustic troop of men, jesters, flatterers, bauds, soothers, adulterers, players, and scoffers, who hating all virtue find a thousand inventions to drive Poets thence, like to carrion crows, that having found a carcass, drive all other birds from it: and as the Coluber (as Ovid saith) always seeketh and* haunteth the cleanest Dovecoat, so this flattering Devil is still conversant in the house of the mighty: and as in the fattest ground grows the rankest grass, so with the men of greatest ability dwelleth the chiefest flattery (S. Jerome calls him a Domestical* enemy.)"
 
-Similarity: 0.8917164127326571
+Similarity: 0.8916033010706684
 
 -----
 
@@ -99,7 +99,7 @@ Similarity: 0.8917164127326571
 
 "There is in Princes and great mens courts (saith he) a rude, envious, and rustic troop of men, jesters, flatterers, bauds, soothers, adulterers, players, and scoffers, who hating all virtue find a thousand inventions to drive Poets thence, like to carrion crows, that having found a carcass, drive all other birds from it: and as the Coluber (as Ovid saith) always seeketh and* haunteth the cleanest Dovecoat, so this flattering Devil is still conversant in the house of the mighty: and as in the fattest ground grows the rankest grass, so with the men of greatest ability dwelleth the chiefest flattery (S. Jerome calls him a Domestical* enemy.)"
 
-Similarity: 0.8878926594243913
+Similarity: 0.8879886692960041
 
 -----
 
@@ -107,7 +107,7 @@ Similarity: 0.8878926594243913
 
 "To conclude therefore the discourse of this Devil, I will end with two notable actions of the Romans, whereby you may perceive by them, to make estimation of truth, and to grow in detestation of Flattery and Falsehood: The Emperor Augustus in his triumph over Anthony and Cleopatra, led to Rome (amongst his other spoils)* a grave Egyptian Priest of sixty years old, whose life was so full of continence, and words so stored with truth, that it was never heard of him in all his life time that he had told untruth, or used flattery; for which cause it was concluded by the Senate, that he should presently bee set free, and made chief Priest, commanding (that among the statues of famous and renowned men) one in especial should be reared for him."
 
-Similarity: 0.8823497526027474
+Similarity: 0.8823905861572388
 
 -----
 
@@ -115,7 +115,7 @@ Similarity: 0.8823497526027474
 
 "To conclude therefore the discourse of this Devil, I will end with two notable actions of the Romans, whereby you may perceive by them, to make estimation of truth, and to grow in detestation of Flattery and Falsehood: The Emperor Augustus in his triumph over Anthony and Cleopatra, led to Rome (amongst his other spoils)* a grave Egyptian Priest of sixty years old, whose life was so full of continence, and words so stored with truth, that it was never heard of him in all his life time that he had told untruth, or used flattery; for which cause it was concluded by the Senate, that he should presently bee set free, and made chief Priest, commanding (that among the statues of famous and renowned men) one in especial should be reared for him."
 
-Similarity: 0.8764908365794961
+Similarity: 0.8765006184585519
 
 -----
 
@@ -139,7 +139,7 @@ Similarity: 0.8738969231159139
 
 "Spartianus on the contrary side, sheweth an example quit opposite to this, and this it was: during the Empire of Claudius, there died a certain Roman called Pamphilus, who as was clearly proved, had not in all his life time spoke one true word, but wholly delighted in lying and flattery: for which cause the Emperor commanded that his body should be left unburied, his goods should be confiscate, his house overthrown, and his wife and children banished Rome, to the end that the memory of a creature so venomous, should not live and have residence in his Commonweal."
 
-Similarity: 0.8731756066779446
+Similarity: 0.873168309657249
 
 -----
 
@@ -155,7 +155,7 @@ Similarity: 0.8725442648842003
 
 "This friend is continually attended and accompanied with four of his brethren, Lightness of mind, Vain Joy, Singularity, & Defense of a mans sins: Lightness of mind teacheth him to presume, Vain Joy swelleth him with temporal prosperities, Singularity makes him affect innovations to please, Defense of his sins groundeth him in his own mischiefs; This sin is the only perverter of friendship, and disturber of society, and unhappily saith Tully is that possession good,* which is purchased by simulation & flattery: so that great cause had both the fathers and Philosophers to detest this sin, because they knew that man is naturally apt to flatter himself, and is best pleased to hear his imperfections dissembled."
 
-Similarity: 0.8691501528755681
+Similarity: 0.8691595926938951
 
 -----
 
@@ -178,4 +178,4 @@ Similarity: 0.8682127924396329
 ------------------------------
 
 END OF REPORT
-TOTAL COST TO PRODUCE: $0.007650000000000001
+TOTAL COST TO PRODUCE: $0.007680000000000001
