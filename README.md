@@ -26,8 +26,8 @@ Outputs a .txt file, called `report.txt` by default. This report contains inform
 ## Instructions
 
 <ol>
-<li>Download the repo.</li>
-<li>Install Python.</li>
+<li>Download the repo</li>
+<li>Install Python</li>
 <li>Install this project's dependencies, including:
 <ul>
 <li>nltk</li>
@@ -37,6 +37,9 @@ Outputs a .txt file, called `report.txt` by default. This report contains inform
 <li>numpy</li>
 </ul>
 </li>
+<li>Create a file called `.env` with `OPENAI_API_KEY = [your openai api key]`</li>
+<li>Run `find_similarities.py`</li>
+<li>Inspect the output folder for results</li>
 </ol>
 
 Note: the limiting time factor of `find_similarities.py` is the embedding with ada-002, which must be done for every sentence in both input texts.
