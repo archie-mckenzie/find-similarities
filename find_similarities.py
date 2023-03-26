@@ -44,6 +44,7 @@ sorted_output_path = 'output/sorted_output.json'
 report_path = 'output/report.txt'
 report_scope = 3 # how many of the most similar sentences the report should analyze
 outlier_threshold = 2.7 # 2.7 is the traditional statistical threshold for outliers
+explanation_model = "gpt-3.5-turbo" # use gpt-3.5-turbo or gpt-4
 
 # ------- CALCULATING COSTS ------- #
 
@@ -201,9 +202,8 @@ for pair in similar_pairs[0: report_scope]:
 
     report.write("Explanation: ")
     try:
-        model = "gpt-3.5-turbo"
         completion = openai.ChatCompletion.create(
-            model = model,
+            model = explanation_model,
             messages = [
                 {"role": "system", "content": "You are a linguistic analysis assistant."},
                 {"role": "user", "content": "Suggest why our vector similarity model may consider the following two sentences similar:\n\n" + pair[1] + "\n\n" + pair[2]}
@@ -211,7 +211,7 @@ for pair in similar_pairs[0: report_scope]:
             temperature = 0
         )
         report.write(completion.choices[0].message.content.strip() + "\n\n")
-        update_cost("You are a linguistic analysis assistant." + "Suggest why our vector similarity model may consider the following two sentences similar:\n\n" + pair[1] + "\n\n" + pair[2] + completion.choices[0].message.content, model)
+        update_cost("You are a linguistic analysis assistant." + "Suggest why our vector similarity model may consider the following two sentences similar:\n\n" + pair[1] + "\n\n" + pair[2] + completion.choices[0].message.content, explanation_model)
     except:
         report.write("There has been an error and an explanation cannot be provided.\n\n")
 
