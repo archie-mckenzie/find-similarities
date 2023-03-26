@@ -42,7 +42,7 @@ input_path_2 = 'input/2.txt'
 output_path = 'output/output.json'
 sorted_output_path = 'output/sorted_output.json'
 report_path = 'output/report.txt'
-report_scope = 3 # how many of the most similar paragraphs the report should analyze
+report_scope = 3 # how many of the most similar sentences the report should analyze
 outlier_threshold = 2.7 # 2.7 is the traditional statistical threshold for outliers
 
 # ------- CALCULATING COSTS ------- #
@@ -225,6 +225,7 @@ if (similarities[0]) < (mean + (outlier_threshold * std_dev)):
     report.write("There were no high-similarity statistical outliers.\n\n")
 else:
     report.write("The following sentence(s) were high-similarity statistical outliers:\n\n")
+    report.write("-----\n\n")
     for pair in similar_pairs:
         if (pair["similarity"] > (mean + (outlier_threshold * std_dev))):
             report.write('"' + pair[1] + '"' +"\n\n")
