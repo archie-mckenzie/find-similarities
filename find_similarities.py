@@ -37,8 +37,8 @@ import json
 import statistics
 
 # ------- EDITABLE VARIABLES ------- #
-input_path_1 = 'input/1.txt'
-input_path_2 = 'input/2.txt'
+input_path_1 = 'input/dial_of_princes.txt'
+input_path_2 = 'input/wits_misery.txt'
 output_path = 'output/output.json'
 sorted_output_path = 'output/sorted_output.json'
 report_path = 'output/report.txt'
