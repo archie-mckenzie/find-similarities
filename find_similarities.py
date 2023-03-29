@@ -103,6 +103,29 @@ def embed_sentences(sentences):
 def sort_by_similarity(pairs):
     return sorted(pairs, key=lambda x: x['similarity'], reverse=True)
 
+# Wraps common words between two given strings in bold tags
+# Returns both strings with bold markers
+def bold_common_words(sentence_1, sentence_2):
+    # Split strings into lists of words
+    words_1 = sentence_1.split()
+    words_2 = sentence_2.split()
+
+    # Find common words
+    common_words = set(words_1).intersection(set(words_2))
+
+    # Replace common words with bold tags
+    for i in range(len(words_1)):
+        if words_1[i] in common_words:
+            words_1[i] = f"<b>{words_1[i]}</b>"
+    for i in range(len(words_2)):
+        if words_2[i] in common_words:
+            words_2[i] = f"<b>{words_2[i]}</b>"
+
+    # Join the modified lists of words back into strings
+    bolded_1 = ' '.join(words_1)
+    bolded_2 = ' '.join(words_2)
+
+    return bolded_1, bolded_2
 
 # ------- PROCESS .TXT FILES ------- # 
 
@@ -217,9 +240,10 @@ content.append(Paragraph("—", styles['BodyText']))
 content.append(Spacer(1, 6))
 
 for pair in similar_pairs[0: report_scope]:
-    content.append(Paragraph('"{}"'.format(pair[1]), styles['BodyText']))
+    sentence_1, sentence_2 = bold_common_words(pair[1], pair[2])
+    content.append(Paragraph('"{}"'.format(sentence_1), styles['BodyText']))
     content.append(Spacer(1, 6))
-    content.append(Paragraph('"{}"'.format(pair[2]), styles['BodyText']))
+    content.append(Paragraph('"{}"'.format(sentence_2), styles['BodyText']))
     content.append(Spacer(1, 6))
     content.append(Paragraph("Similarity: {}".format(pair["similarity"]), styles['BodyText']))
     content.append(Spacer(1, 6))
@@ -235,7 +259,7 @@ for pair in similar_pairs[0: report_scope]:
         content.append(Paragraph("Explanation: {}".format(completion.choices[0].message.content.strip()), styles['BodyText']))
         update_cost("You are a linguistic analysis assistant." + "Suggest why our vector similarity model may consider the following two sentences similar:\n\n" + pair[1] + "\n\n" + pair[2] + completion.choices[0].message.content, explanation_model)
     except:
-        content.append(Paragraph("There has been an error and an explanation cannot be provided.\n\n"), styles['BodyText'])
+        content.append(Paragraph("There has been an error and an explanation cannot be provided."), styles['BodyText'])
     
     content.append(Spacer(1, 6))
     content.append(Paragraph("—", styles['BodyText']))
@@ -254,9 +278,10 @@ else:
     content.append(Spacer(1, 6))
     for pair in similar_pairs:
         if (pair["similarity"] > (mean + (outlier_threshold * std_dev))):
-            content.append(Paragraph('"{}"'.format(pair[1]), styles['BodyText']))
+            sentence_1, sentence_2 = bold_common_words(pair[1], pair[2])
+            content.append(Paragraph('"{}"'.format(sentence_1), styles['BodyText']))
             content.append(Spacer(1, 6))
-            content.append(Paragraph('"{}"'.format(pair[2]), styles['BodyText']))
+            content.append(Paragraph('"{}"'.format(sentence_2), styles['BodyText']))
             content.append(Spacer(1, 6))
             content.append(Paragraph("Similarity: {}".format(pair["similarity"]), styles['BodyText']))
             content.append(Spacer(1, 6))
